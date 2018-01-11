@@ -1,0 +1,41 @@
+<div class="container-fluid center-block">
+<div class="row">
+<div class="col-md-4"></div>
+<div class="col-md-4">
+<div class="well">
+{{#bs-form formLayout="vertical" model=this onSubmit=(action "submit") as |form|}}
+	{{#form.group}}
+		
+		{{form.element label="Application ID" placeholder="ID" required=true property="appId"}}
+		{{form.element label="Description" placeholder="Description" required=true property="description"}}
+		{{form.element label="SEAL ID" placeholder="SEAL" required=true property="sealId"}}
+		
+		<label class="control-label">Status</label><br/>
+		{{#bs-button-group value=buttonGroupValue1 property="status" label="Status" type="radio" onChange=(action (mut buttonGroupValue1)) as |bg|}}
+		  {{#bg.button type="default" value="A"}}Active{{/bg.button}}
+		  {{#bg.button type="default" value="I"}}In-Active{{/bg.button}}
+		{{/bs-button-group}}
+		<br/><br/>
+		<label class="control-label">Case ID Sequencing</label><br/>
+		{{#bs-button-group value=buttonGroupValue2 property="caseSequence" type="radio" onChange=(action (mut buttonGroupValue2)) as |bg|}}
+		  {{#bg.button type="default" value="S"}}Sequence{{/bg.button}}
+		  {{#bg.button type="default" value="D"}}Date format - YYYYMMDD&lt;sequence&gt;{{/bg.button}}
+		{{/bs-button-group}}
+		
+		{{form.element label="Next Case ID" placeholder="Next Case ID" required=true property="nextCaseId"}}
+		{{form.element controlType="textarea" label="Comments" property="comments"}}
+		
+		<br/><br/>
+		<div class="col-md-6 col-md-offset-4">
+		{{#bs-button-group value=buttonGroupValue class="center-block" onChange=(action (mut buttonGroupValue)) as |bg|}}
+			{{bs-button defaultText="Save" class="btn-success" type="primary" buttonType="submit" }}
+			{{bs-button defaultText="Cancel" class="btn-danger" type="primary" buttonType="submit" }}
+		{{/bs-button-group}}
+		</div>
+
+   {{/form.group}}
+{{/bs-form}}
+</div></div>
+<div class="col-md-4"></div>
+</div>
+</div>
